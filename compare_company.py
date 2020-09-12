@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager,rc
 
 
-font_path = "C:/my_develop/python_01/economy/font/H2HDRM.TTF"
+font_path = "C:/my_develop/opendart/font/H2HDRM.TTF"
 font_name = font_manager.FontProperties(fname=font_path).get_name()
 plt.rc('font', family=font_name)
 
@@ -75,9 +75,8 @@ y2_value = merged_df['{}'.format(int(target_year)-1)].values.tolist()
 # y3_value = merged_df['{}'.format(calculated)].values.tolist()
 # print(y3_value)
 
-
-plt.bar(x_name, y2_value)
-plt.show()
+chart1 = plt.bar(x_name, y1_value)
+plt.show(chart1)
 
 
 # df2.to_excel("financial_report/fin_Statement_{0}_{1}_{2}_{3}.xlsx".format(report_type, target_year, reports_dict[target_report], corp_codes_dict[corp_code]))
