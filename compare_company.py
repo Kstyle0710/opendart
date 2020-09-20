@@ -1,8 +1,12 @@
 import requests
 import pandas as pd
+import numpy as np
 from openpyxl.workbook import Workbook
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 from matplotlib import font_manager,rc
+
+mpl.rcParams['axes.unicode_minus'] = False
 
 font_path = "C:/my_develop/opendart/font/H2HDRM.TTF"
 font_name = font_manager.FontProperties(fname=font_path).get_name()
@@ -57,30 +61,40 @@ try:
 except:
   pass
 
+
 merged_df = merged_df.rename(columns = {'thstrm_amount_x':'{}'.format(target_year), 'thstrm_amount_y':'{}'.format(int(target_year)-1)})
-x_name = merged_df['account_nm'].values.tolist()
-y1_value = merged_df['{}'.format(target_year)].values.tolist()
-y2_value = merged_df['{}'.format(int(target_year)-1)].values.tolist()
-# y3_value = merged_df['{}'.format(calculated)].values.tolist()
+print(merged_df)
+# merged_df[['2019', '2020']].plot(kind='bar')
+merged_df.plot.barh()
+
+plt.show()
+
+
+
+# x_name = merged_df['account_nm'].values.tolist()
+# y1_value = merged_df['{}'.format(target_year)].values.tolist()
+# y2_value = merged_df['{}'.format(int(target_year)-1)].values.tolist()
+# y3_value = merged_df['calculated'].values.tolist()
+
 
 # plt.sublpot(2, 1, 1)
-plt.plot(x_name, y1_value, color='red')
+# plt.plot(x_name, y1_value, color='red')
 # plt.ylabel("Money1")
 
 
 # plt.sublpot(2, 1, 2)
-plt.plot(x_name, y2_value, color='blue')
+# plt.plot(x_name, y2_value, color='blue')
 # plt.ylabel("Money2")
-plt.xlabel('x')
-plt.ylabel('y')
-plt.title('title')
-
-plt.legend()
-plt.show()
-
-
-plt.show()
+# plt.xlabel('x')
+# plt.ylabel('y')
+# plt.title('title')
+#
+# plt.legend()
+# plt.show()
+#
+#
 
 
 # df2.to_excel("financial_report/fin_Statement_{0}_{1}_{2}_{3}.xlsx".format(report_type, target_year, reports_dict[target_report], corp_codes_dict[corp_code]))
 # print("{0:+,}".format(10000000000000000))
+
